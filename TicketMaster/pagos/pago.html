@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pago de Boletos</title>
+
+  <link rel="stylesheet" href="pago.css">
+  <link rel="stylesheet" href="/style/estilos.css">
+  <link rel="stylesheet" href="/style/principal.css">
+  <link rel="stylesheet" href="/style/general.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 120%;
+      background: url('/assets/fondo_pago.jpg') no-repeat center center/cover;
+      filter: brightness(50%);
+      z-index: -1;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="left_section">
+    <a href="/principal.html" id="logo-btn">
+      <img id="logo" src="/assets/logo_white.png" alt="Logo">
+    </a>        
+  </div>
+  <div class="middle_section">
+    <div class="cine">
+      <p class="cine_p" onclick="window.location.href='/eventoCine.html'">Cine</p>
+    </div>
+    <div class="museo">
+      <p class="museo_p" onclick="window.location.href='/eventoMuseo.html'">Museo</p>
+    </div>
+    <div class="teatro">
+      <p class="teatro_p" onclick="window.location.href='/eventoTeatro.html'">Teatro</p>
+    </div>
+  </div>
+  <div class="right_section">
+    <div class="registro" onclick="window.location.href='/index.html'">
+      <img class="registro_icon" src="/assets/icon/profile_icon.svg">
+      <p class="registro_paragraph">Registrate</p>
+    </div>
+  </div>
+</div>
+
+<div class="formulario_container">
+  <h1>Comprar boletos</h1>
+
+  <form id="formularioCompra">
+    <input type="text" id="nombre" placeholder="Nombre del usuario" required>
+    <input type="text" id="evento" placeholder="Tipo de evento" required>
+    <input type="date" id="fecha">
+    
+    <label for="hora">Horario:</label>
+    <select id="hora" name="hora" required>
+      <option value="10:00 A.M">10:00 A.M</option>
+      <option value="11:00 A.M">11:00 A.M</option>
+      <option value="12:00 P.M">12:00 P.M</option>
+      <option value="1:00 P.M">1:00 P.M</option>
+      <option value="2:00 P.M">2:00 P.M</option>
+      <option value="3:00 P.M">3:00 P.M</option>
+      <option value="4:00 P.M">4:00 P.M</option>
+      <option value="5:00 P.M">5:00 P.M</option>
+      <option value="6:00 P.M">6:00 P.M</option>
+      <option value="7:00 P.M">7:00 P.M</option>
+      <option value="8:00 P.M">8:00 P.M</option>
+      <option value="9:00 P.M">9:00 P.M</option>
+      <option value="10:00 P.M">10:00 P.M</option>
+    </select>
+
+    <label for="ubicacion">Ubicación:</label>
+    <select id="ubicacion" name="ubicacion" required onchange="actualizarPrecio()">
+      <option value="" disabled selected>Selecciona una opción</option>
+      <option value="General">General - $100</option>
+      <option value="VIP">VIP - $200</option>
+      <option value="Platino">Platino - $300</option>
+    </select>
+
+    <input type="number" id="cantidad" placeholder="Cantidad de boletos" min="1" required>
+
+    <label for="metodoPago">Método de pago:</label>
+    <select id="metodoPago" name="metodoPago" required>
+      <option value="Tarjeta">Pago con tarjeta</option>
+      <option value="Efectivo">Pago en efectivo</option>
+      <option value="PayPal">Pago con PayPal</option>
+    </select>
+
+    <label for="precio">Precio:</label>
+    <input type="text" id="precio" name="precio" readonly>
+
+    <input type="tel" id="telefono" placeholder="Teléfono WhatsApp" required pattern="[0-9]{10}" title="Ingresa un número de 10 dígitos">
+
+    <button id="confirmar">Confirmar compra</button>
+    <canvas id="qrCanvas" style="display:none;"></canvas>
+  </form>
+</div>
+
+<script src="procesado_pago.js"></script>
+<script src="script.js"></script>
+
+<script>
+  function actualizarPrecio() {
+    const preciosUbicacion = {
+      "General": 100,
+      "VIP": 200,
+      "Platino": 300
+    };
+    const ubicacion = document.getElementById("ubicacion").value;
+    const cantidad = parseInt(document.getElementById("cantidad").value) || 1;
+    const precioUnitario = preciosUbicacion[ubicacion] || 0;
+    document.getElementById("precio").value = `$${precioUnitario * cantidad}`;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const preciosUbicacion = {
+      "General": 100,
+      "VIP": 200,
+      "Platino": 300
+    };
+
+    const nombre = localStorage.getItem("nombreUsuario") || "";
+    const tipoEvento = localStorage.getItem("tipoEvento") || "Cine";
+    const eventoSeleccionado = localStorage.getItem("eventoSeleccionado") || "Película sorpresa";
+    const ubicacionSeleccionada = localStorage.getItem("ubicacionSeleccionada") || "General";
+    const horarioGuardado = localStorage.getItem("horarioSeleccionado") || "10:00 A.M";
+
+    document.getElementById("nombre").value = nombre;
+    document.getElementById("evento").value = `${tipoEvento}: ${eventoSeleccionado}`;
+    document.getElementById("ubicacion").value = ubicacionSeleccionada;
+    document.getElementById("hora").value = horarioGuardado;
+
+    const fechaInput = document.getElementById("fecha");
+    function siguienteDiaLaboral(fecha = new Date()) {
+      while (fecha.getDay() === 0 || fecha.getDay() === 6) {
+        fecha.setDate(fecha.getDate() + 1);
+      }
+      return fecha.toISOString().split("T")[0];
+    }
+    const fechaLaboral = siguienteDiaLaboral();
+    fechaInput.value = fechaLaboral;
+    fechaInput.min = fechaLaboral;
+
+    document.getElementById("metodoPago").value = "Tarjeta";
+
+    document.getElementById("hora").addEventListener("change", () => {
+      const horarioSeleccionado = document.getElementById("hora").value;
+      localStorage.setItem("horarioSeleccionado", horarioSeleccionado);
+    });
+
+    const horaSelect = document.getElementById("hora");
+    const now = new Date();
+    const horaActual = now.getHours();
+    const minutosActuales = now.getMinutes();
+
+    function horasValidas() {
+      const options = horaSelect.querySelectorAll('option');
+      options.forEach(option => {
+        const horaOption = option.value.split(":");
+        const horaOptionHora = parseInt(horaOption[0]);
+        if (fechaInput.value === fechaLaboral) {
+          if (horaOptionHora < horaActual || (horaOptionHora === horaActual && parseInt(horaOption[1]) <= minutosActuales)) {
+            option.disabled = true;
+          } else {
+            option.disabled = false;
+          }
+        } else {
+          option.disabled = false;
+        }
+      });
+    }
+
+    horasValidas();
+
+    document.getElementById("ubicacion").addEventListener("change", actualizarPrecio);
+    document.getElementById("cantidad").addEventListener("input", actualizarPrecio);
+    actualizarPrecio();
+
+    const boton = document.getElementById("confirmar");
+    boton.addEventListener("click", confirmarCompra); // asegúrate que confirmarCompra esté definida
+  });
+</script>
+
+</body>
+</html>

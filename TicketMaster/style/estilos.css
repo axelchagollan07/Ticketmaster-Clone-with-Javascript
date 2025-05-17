@@ -1,0 +1,214 @@
+/* Contenedor principal */
+.contenedor {
+    max-width: 1250px;    /* Usar max-width para adaptarse en pantallas más pequeñas */
+    height: 750px;
+    margin: 20px auto 0;  /* Centrado horizontal con margen superior */
+    padding: 20px;
+    background-color: rgb(235, 235, 235);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column; /* apila elementos verticalmente */
+    align-items: center;     /* centra horizontalmente */
+    justify-content: center; /* centra verticalmente */
+    gap: 10px;
+    color: black;
+    box-sizing: border-box; /* Asegura que padding no aumente ancho */
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 480px) {
+    .contenedor {
+        width: 95%;
+        height: auto;  /* Para que se adapte a contenido variable */
+        flex-direction: column; /* Coloca elementos en columna para móvil */
+        padding: 15px;
+    }
+
+    .campo-form, button {
+        padding: 12px;
+    }
+}
+
+/* Botones en la página de eventos */
+.eventos .btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #006ce3; /* Mejor usar hex o rgba coherente */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.eventos .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Mensajes de error */
+.error-msg,
+.error,
+.alert {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Mensajes de éxito */
+.success,
+.confirmacion-compra {
+    color: white;
+    background-color: #28a745;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+/* Ajuste del contenedor de opciones */
+.opciones {
+    margin-top: 30px;
+}
+
+/* Estilos de títulos y textos en sección eventos */
+.eventos h2 {
+    margin-top: 30px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+.eventos p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Estilo para cada evento */
+.evento {
+    flex: 1 1 300px; /* Crece, encoge y base de 300px para buen comportamiento responsivo */
+    height: 600px;
+    margin: 5px;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Imagen del evento */
+.evento-img,
+.evento_image {
+    width: 250px;
+    height: 400px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Descripción del evento */
+.evento-description {
+    font-size: 18px;
+    color: #333;
+    margin-top: 15px;
+    flex-grow: 1;
+    text-align: left;
+}
+
+/* Detalles del evento */
+.detalles-evento {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    text-align: left;
+}
+
+/* Grid flexible para los eventos */
+.eventos_grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+
+/* Estilo de filas de eventos */
+.evento_row {
+    margin: 8px;
+    position: relative;
+}
+
+
+/* Contenedor principal de la página de inicio */
+.contenedor_index {
+    max-width: 1250px;
+    height: 340px;
+    margin: 80px auto 0;
+    padding: 40px 20px;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column; /* apila elementos verticalmente */
+    align-items: center;     /* centra horizontalmente */
+    justify-content: center; /* centra verticalmente */
+    box-sizing: border-box;
+    text-align: center;
+    color: black;
+}
+
+/* Título */
+.contenedor_index h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #006ce3;
+}
+
+/* Botón de inicio */
+.button_index {
+    width: 200px;
+    padding: 12px 16px;
+    background-color: #006ce3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button_index:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Responsive para móvil */
+@media (max-width: 480px) {
+    .contenedor_index {
+        width: 95%;
+        height: auto;
+        padding: 30px 15px;
+    }
+
+    .contenedor_index h1 {
+        font-size: 24px;
+    }
+
+    .button_index {
+        width: 100%;
+        font-size: 16px;
+    }
+}
+
+
+/* AQUI ESTA LO NUEVO */
+
+

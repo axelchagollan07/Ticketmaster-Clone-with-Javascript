@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión - TicketMaster</title>
+    <link rel="stylesheet" href="/style/estilos.css">
+    <link rel="stylesheet" href="/style/principal.css">
+    <link rel="stylesheet" href="/style/general.css">
+
+    <style>
+
+      /* Fondo con imagen */
+      body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/assets/fondo_login.jpeg') no-repeat center center/cover;
+            filter: brightness(50%);
+            z-index: -1;
+        }  
+ 
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="left_section">
+                <a href="/principal.html" id="logo-btn">
+                    <img id="logo" src="/assets/logo_white.png" alt="Logo">
+                </a>        
+        </div>
+        <div class="middle_section">
+            <div class="cine">
+                <p  class="cine_p" onclick="window.location.href='/eventoCine.html'">Cine</p>
+            </div>
+            <div class="museo">
+                <p class="museo_p" onclick="window.location.href='/eventoMuseo.html'">Museo</p>
+            </div>
+            <div class="teatro">
+                <p class="teatro_p" onclick="window.location.href='/eventoTeatro.html'">Teatro</p>
+            </div>
+        </div>
+        <div class="rigth_section">
+            <div class="registro" onclick="window.location.href='/index.html'">
+                <img class="registro_icon" src="/assets/icon/profile_icon.svg">
+                <p class="registro_paragraph">Registrate</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contenedor_form"> 
+        <h1>Iniciar sesión</h1>
+
+        <form id="loginForm">
+    <label for="usuario">Usuario:</label>
+    <input type="text" id="usuario" required>
+
+    <label for="contraseña">Contraseña:</label>
+    <input type="password" id="contraseña" required>
+
+    <button type="submit">Iniciar sesión</button>
+</form>
+
+
+        <!-- Contenedor para mensajes de error y éxito -->
+        <div id="loginMensaje" class="alert"></div>
+
+        <p>¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a></p>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+/* Header principal fijo */
+.header {
+    height: 60px;
+    background-color: #007bff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 16px;
+    border-bottom: 1px solid rgb(145, 145, 145);
+    z-index: 1000; /* Para que siempre esté encima */
+}
+
+/* Sección izquierda del header */
+.left_section {
+    width: 170px;
+    display: flex;
+    align-items: center;
+    position: relative; /* Para el botón logo absoluto */
+}
+
+/* Botón del logo */
+#logo-btn {
+    display: flex;
+    background-color: transparent; /* Usar transparent en lugar de rgba(0,0,0,0) */
+    padding: 0;
+    border-radius: 8px;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.2s;
+    position: absolute;
+    left: 20px;
+    height: 50px;
+    cursor: pointer;
+}
+
+#logo-btn:hover {
+    background-color: transparent; /* Sin cambio visible */
+    transform: scale(1.05);
+}
+
+/* Logo */
+#logo {
+    width: 150px;
+    height: auto;
+}
+
+/* Sección central del header */
+.middle_section {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 40px;
+    padding: 0 4px;
+    max-width: 732px;
+}
+
+/* Columnas internas */
+.cine, .teatro, .museo {
+    flex: 1;
+}
+
+/* Textos de las opciones */
+.cine_p, .teatro_p, .museo_p {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    transition: font-size 0.5s ease;
+}
+
+.cine_p:hover, .teatro_p:hover, .museo_p:hover {
+    font-size: 20px;
+}
+
+/* Sección derecha del header */
+.rigth_section {
+    width: 210px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* Botón registro (sin borde ni fondo) */
+.registro {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/* Icono del registro */
+.registro_icon {
+    width: 25px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: width 0.5s ease;
+}
+
+.registro_icon:hover {
+    width: 27px;
+}
+
+/* Texto del registro */
+.registro_paragraph {
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: font-size 0.5s ease;
+}
+
+.registro_paragraph:hover {
+    font-size: 22px;
+}
+
+/* Barra de búsqueda fija debajo del header */
+.header_search {
+    height: 64px;
+    background-color: #007bff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    padding: 0 16px;
+    z-index: 999;
+}
+
+/* Contenedor de búsqueda */
+.search_continer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    top: 58px;
+    left: 70px;
+    right: 70px;
+    height: 48px;
+    align-items: center;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+/* Barra de texto para búsqueda */
+.search_bar {
+    flex: 2;
+    height: 48px;
+    width: 100%;
+    padding: 0 16px 0 16px;
+    border: none;
+    border-left: 1px solid gray;
+    background-color: white;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    cursor: text;
+    position: relative;
+}
+
+.search_bar::placeholder {
+    font-size: 16px;
+    padding: 1px 0;
+    color: #999;
+}
+
+/* Estado de búsqueda (select o texto) */
+.search_state {
+    flex: 1;
+    height: 48px;
+    border: none;
+    background-color: white;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    color: grey;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Fecha de búsqueda */
+.search_date {
+    flex: 1;
+    height: 48px;
+    border: none;
+    border-left: 1px solid gray;
+    background-color: white;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    color: grey;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Botón de búsqueda */
+.search_button {
+    height: 40px;
+    width: 70px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    margin-left: 0;
+    margin-right: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.search_button:hover {
+    background-color: #0056b3;
+}

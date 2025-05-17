@@ -1,0 +1,136 @@
+/* Reset general y box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para el body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    padding-top: 80px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Mejor usar min-height para evitar problemas en móviles */
+}
+
+/* Estilos para inputs */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Estilos para títulos */
+h1 {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilos para enlaces */
+a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Contenedor principal del formulario */
+.contenedor_form {
+    background-color: white;
+    padding: 50px 40px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: black;
+    text-align: center;
+}
+
+/* Formularios */
+form {
+    width: 100%;
+}
+
+/* Campos del formulario */
+.campo-form {
+    width: 100%;
+    padding: 15px;
+    margin: 12px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+.campo-form:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Botones */
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #006ce3; /* Cambié a hex para consistencia */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.button_index {
+    width: 190px;
+    padding: 10px 16px; /* Aumenta la altura sin romper proporciones */
+    background-color: #006ce3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    line-height: 1.2;
+    margin-top: 20px; /* Separa del h1 */
+    align-self: center; /* Asegura centrado dentro de flex */
+}
+
+
+
+button:hover {
+    background-color: #0056b3;
+}

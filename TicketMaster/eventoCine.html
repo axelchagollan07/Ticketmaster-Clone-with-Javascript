@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos de Cine</title>
+    <link rel="stylesheet" href="style/estilos.css">
+    <link rel="stylesheet" href="style/principal.css">
+    <link rel="stylesheet" href="style/general.css">
+
+    <style>
+        /* Fondo con imagen */
+        body::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 125%;
+              background: url('assets/fondo_cine.jpg') no-repeat center center/cover;
+              filter: brightness(50%);
+              z-index: -1;
+          }  
+      </style>
+
+</head>
+<body>
+
+    <div class="header">
+        <div class="left_section">
+                <a href="principal.html" id="logo-btn">
+                    <img id="logo" src="assets/logo_white.png" alt="Logo">
+                </a>        
+        </div>
+        <div class="middle_section">
+            <div class="cine">
+                <p  class="cine_p" onclick="window.location.href='eventoCine.html'">Cine</p>
+            </div>
+            <div class="museo">
+                <p class="museo_p" onclick="window.location.href='eventoMuseo.html'">Museo</p>
+            </div>
+            <div class="teatro">
+                <p class="teatro_p" onclick="window.location.href='eventoTeatro.html'">Teatro</p>
+            </div>
+        </div>
+        <div class="rigth_section">
+            <div class="registro" onclick="window.location.href='index.html'">
+                <img class="registro_icon" src="assets/icon/profile_icon.svg">
+                <p class="registro_paragraph">Registrate</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contenedor">
+        <h1 class="title_eventos">Eventos de Cine</h1>
+    
+        <section class="eventos_grid">
+            <!-- Avatar 2 -->
+            <div class="evento">
+                <div class="evento_row">
+                    <img class="evento_image" src="assets/img_events/cine_avatar.jpg" alt="Avatar 2">
+                </div>
+                <div>
+                    <button class="btn" onclick="mostrarDetallesAvatar()">Ver Detalles</button>
+                    <button class="btn" onclick="guardarDatosEvento('Cine', 'Avatar 2', 'Cinemark')">Comprar Boletos</button>
+                </div>
+            </div>
+
+            <!-- Jurassic Park -->
+            <div class="evento">
+                <div class="evento_row">
+                    <img class="evento_image" src="assets/img_events/cine_jurassic.jpg" alt="Jurassic Park">
+                </div>
+                <div>
+                    <button class="btn" onclick="mostrarDetallesJurassic()">Ver Detalles</button>
+                    <button class="btn" onclick="guardarDatosEvento('Cine', 'Jurassic Park', 'Cinépolis')">Comprar Boletos</button>
+                </div>
+            </div>
+
+            <!-- Spider-Man -->
+            <div class="evento">
+                <div class="evento_row">
+                    <img class="evento_image" src="assets/img_events/cine_spiderman.jpg" alt="Spider-Man">
+                </div>
+                <div>
+                    <button class="btn" onclick="mostrarDetallesSpiderman()">Ver Detalles</button>
+                    <button class="btn" onclick="guardarDatosEvento('Cine', 'Spider-Man', 'Cinemex')">Comprar Boletos</button>
+                </div>
+            </div>
+        </section>
+        <a href="/principal.html" class="btn">Volver a la selección</a>
+    </div>
+    
+    
+</body>
+
+<script>
+    // Mostrar detalles del evento Avatar
+    function mostrarDetallesAvatar() {
+        alert(
+            "Película: Avatar 2\n" +
+            "Cinemark, 9:00 PM\n" +
+            "Capacidad: 200 asientos | Servicio: PLUUS\n" +
+            "Horarios de servicio: Lunes a Domingo, 10:00 AM - 10:00 PM\n" +
+            "Compra máxima: 5 boletos por usuario\n" +
+            "Restricciones: No mascotas, no alimentos"
+        );
+    }
+
+    // Mostrar detalles del evento Jurassic Park
+    function mostrarDetallesJurassic() {
+        alert(
+            "Película: Jurassic Park\n" +
+            "Cinépolis, 7:30 PM\n" +
+            "Capacidad: 300 asientos | Servicio: VIP\n" +
+            "Horarios de servicio: Lunes a Domingo, 10:00 AM - 10:00 PM\n" +
+            "Compra máxima: 5 boletos por usuario\n" +
+            "Restricciones: No mascotas, no alimentos"
+        );
+    }
+
+    // Mostrar detalles del evento Spider-Man
+    function mostrarDetallesSpiderman() {
+        alert(
+            "Película: Spider-Man\n" +
+            "Cinemex, 8:00 PM\n" +
+            "Capacidad: 250 asientos | Servicio: 4DX\n" +
+            "Horarios de servicio: Lunes a Domingo, 10:00 AM - 10:00 PM\n" +
+            "Compra máxima: 5 boletos por usuario\n" +
+            "Restricciones: No mascotas, no alimentos"
+        );
+    }
+
+    // Guardar datos del evento seleccionado en localStorage
+    function guardarDatosEvento(tipo, nombreEvento, ubicacion) {
+        localStorage.setItem("tipoEvento", tipo);
+        localStorage.setItem("eventoSeleccionado", nombreEvento);
+        localStorage.setItem("ubicacionSeleccionada", ubicacion);
+        window.location.href = "pagos/pago.html";
+    }
+
+    // Al cargar la página, actualizar el nombre del usuario si está almacenado
+    document.addEventListener("DOMContentLoaded", () => {
+        const nombre = localStorage.getItem("nombreUsuario");
+
+        if (nombre) {
+            const parrafo = document.querySelector(".registro_paragraph");
+            const contenedor = document.querySelector(".registro");
+
+            if (parrafo && contenedor) {
+                parrafo.textContent = nombre;
+                contenedor.style.cursor = "default";
+                contenedor.onclick = null;
+            }
+        }
+    });
+</script>
+
+</html>

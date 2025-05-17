@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pago con PayPal</title>
+  <link rel="stylesheet" href="styles/pasarela.css">
+</head>
+<body>
+  <div class="contenedor-pago">
+    <h1>Pago con PayPal</h1>
+    <p>Serás redirigido a PayPal para completar tu compra.</p>
+    <button onclick="simularPaypal()">Ir a PayPal</button>
+  </div>
+
+  <script>
+    function simularPaypal() {
+      alert("Simulación de redirección a PayPal\n¡Gracias por tu compra!");
+      window.location.href = "../principal.html";
+    }
+  </script>
+</body>
+</html>

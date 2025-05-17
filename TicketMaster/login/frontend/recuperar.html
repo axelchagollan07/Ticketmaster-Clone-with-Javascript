@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Recuperar Contraseña</title>
+    <link rel="stylesheet" href="/style/estilos.css">
+</head>
+<body>
+    <div class="contenedor_form">
+        <h1>Recuperar contraseña</h1>
+        <form id="formRecuperar">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" required>
+
+            <label for="nuevaPass">Nueva contraseña:</label>
+            <input type="password" id="nuevaPass" required>
+
+            <button type="submit">Actualizar contraseña</button>
+        </form>
+        <div id="mensajeRecuperacion" class="alert"></div>
+    </div>
+
+    <script>
+        document.getElementById("formRecuperar").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const email = document.getElementById("email").value;
+            const nuevaPass = document.getElementById("nuevaPass").value;
+            const mensaje = document.getElementById("mensajeRecuperacion");
+
+            try {
+                const res = await fetch('http://localhost:3000/auth/recuperar', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ email, nuevaPass })
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    mensaje.textContent = data.mensaje;
+                    mensaje.classList.add("success");
+                } else {
+                    mensaje.textContent = data.mensaje;
+                    mensaje.classList.add("error");
+                }
+
+            } catch (err) {
+                mensaje.textContent = "Error al conectar con el servidor.";
+                mensaje.classList.add("error");
+            }
+        });
+    </script>
+</body>
+</html>

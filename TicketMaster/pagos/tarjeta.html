@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pago con Tarjeta</title>
+  <link rel="stylesheet" href="styles/pasarela.css">
+</head>
+<body>
+  <div class="contenedor-pago">
+    <h1>Pago con Tarjeta</h1>
+    <form id="formTarjeta" onsubmit="procesarPagoTarjeta(event)">
+      <label for="nombre">Nombre en la tarjeta:</label>
+      <input type="text" id="nombre" required>
+
+      <label for="numero">Número de tarjeta:</label>
+      <input type="text" id="numero" maxlength="16" required>
+
+      <label for="fecha">Fecha de vencimiento:</label>
+      <input type="month" id="fecha" required>
+
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" maxlength="3" required>
+
+      <button type="submit">Pagar</button>
+    </form>
+  </div>
+
+  <script>
+    function procesarPagoTarjeta(event) {
+      event.preventDefault();
+      alert("Pago con tarjeta procesado correctamente.\n¡Gracias por tu compra!");
+      window.location.href = "../principal.html";
+    }
+  </script>
+</body>
+</html>

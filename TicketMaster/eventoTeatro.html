@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos de Teatro</title>
+    <link rel="stylesheet" href="style/estilos.css">
+    <link rel="stylesheet" href="style/principal.css">
+    <link rel="stylesheet" href="style/general.css">
+
+    <style>
+        /* Fondo con imagen */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 125%;
+            background: url('assets/fondo_teatro.jpg') no-repeat center center/cover;
+            filter: brightness(50%);
+            z-index: -1;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="left_section">
+            <a href="principal.html" id="logo-btn">
+                <img id="logo" src="assets/logo_white.png" alt="Logo">
+            </a>
+        </div>
+        <div class="middle_section">
+            <div class="cine">
+                <p class="cine_p" onclick="window.location.href='eventoCine.html'">Cine</p>
+            </div>
+            <div class="museo">
+                <p class="museo_p" onclick="window.location.href='eventoMuseo.html'">Museo</p>
+            </div>
+            <div class="teatro">
+                <p class="teatro_p" onclick="window.location.href='eventoTeatro.html'">Teatro</p>
+            </div>
+        </div>
+        <div class="rigth_section">
+            <div class="registro" onclick="window.location.href='index.html'">
+                <img class="registro_icon" src="assets/icon/profile_icon.svg">
+                <p class="registro_paragraph">Registrate</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contenedor">
+        <h1>Eventos de Teatro</h1>
+
+        <section class="eventos_grid">
+
+            <!-- Obra: Hamlet -->
+            <div class="evento">
+                <div class="evento_row">
+                    <img class="evento_image" src="assets/img_events/teatro_hamlet.jpg" alt="Hamlet">
+                </div>
+                <div>
+                    <button class="btn" onclick="mostrarDetallesHamlet()">Ver Detalles</button>
+                    <button class="btn" onclick="guardarDatosEvento('Teatro', 'Hamlet', 'Teatro Colón, Buenos Aires')">Comprar Boletos</button>
+                </div>
+            </div>
+
+            <!-- Obra: La Casa de Bernarda Alba -->
+            <div class="evento">
+                <div class="evento_row">
+                    <img class="evento_image" src="assets/img_events/teatro_alba.jpg" alt="La Casa de Bernarda Alba">
+                </div>
+                <div>
+                    <button class="btn" onclick="mostrarDetallesBernarda()">Ver Detalles</button>
+                    <button class="btn" onclick="guardarDatosEvento('Teatro', 'La Casa de Bernarda Alba', 'Teatro de la Scala, Milán')">Comprar Boletos</button>
+                </div>
+            </div>
+
+            <!-- Obra: El Lago de los Cisnes -->
+            <div class="evento">
+                <div class="evento_row">
+                    <img class="evento_image" src="assets/img_events/teatro_cisnes.jpg" alt="El Lago de los Cisnes">
+                </div>
+                <div>
+                    <button class="btn" onclick="mostrarDetallesCisnes()">Ver Detalles</button>
+                    <button class="btn" onclick="guardarDatosEvento('Teatro', 'El Lago de los Cisnes', 'Teatro Metropólitan, Ciudad de México')">Comprar Boletos</button>
+                </div>
+            </div>
+
+        </section>
+        <a href="/principal.html" class="btn">Volver a la selección</a>
+    </div>
+
+    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const nombre = localStorage.getItem("nombreUsuario");
+
+            if (nombre) {
+                const parrafo = document.querySelector(".registro_paragraph");
+                const contenedor = document.querySelector(".registro");
+
+                if (parrafo && contenedor) {
+                    parrafo.textContent = nombre;
+                    contenedor.style.cursor = "default";
+                    contenedor.onclick = null;
+                }
+            }
+        });
+
+        function guardarDatosEvento(tipo, nombreEvento, ubicacion) {
+            localStorage.setItem("tipoEvento", tipo);
+            localStorage.setItem("eventoSeleccionado", nombreEvento);
+            localStorage.setItem("ubicacionSeleccionada", ubicacion);
+            window.location.href = "pagos/pago.html";
+        }
+
+        function mostrarDetallesHamlet() {
+            alert(
+                "Obra: Hamlet\n" +
+                "Teatro Colón Buenos Aires, 8:00 PM\n" +
+                "Capacidad: 1000 asientos | Precio: $500 (Luneta), $300 (Palco)\n" +
+                "Horarios de servicio: Lunes a Viernes, 9:00 AM - 6:00 PM\n" +
+                "Compra máxima: 10 boletos por usuario\n" +
+                "Restricciones: Ropa formal"
+            );
+        }
+
+        function mostrarDetallesBernarda() {
+            alert(
+                "Obra: La Casa de Bernarda Alba\n" +
+                "Teatro de la Scala Milán, 6:00 PM\n" +
+                "Capacidad: 1500 asientos | Precio: $600 (Luneta), $350 (Palco)\n" +
+                "Horarios de servicio: Lunes a Viernes, 9:00 AM - 6:00 PM\n" +
+                "Compra máxima: 10 boletos por usuario\n" +
+                "Restricciones: Ropa formal"
+            );
+        }
+
+        function mostrarDetallesCisnes() {
+            alert(
+                "Obra: El Lago de los Cisnes\n" +
+                "Teatro Metropólitan, Ciudad de México, 8:00 PM\n" +
+                "Capacidad: 1200 asientos | Precio: $550 (Luneta), $400 (Palco)\n" +
+                "Horarios de servicio: Lunes a Viernes, 9:00 AM - 6:00 PM\n" +
+                "Compra máxima: 10 boletos por usuario\n" +
+                "Restricciones: Ropa formal"
+            );
+        }
+    </script>
+</body>
+
+</html>

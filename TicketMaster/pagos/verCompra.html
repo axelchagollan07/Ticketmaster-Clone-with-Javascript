@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalle de Compra</title>
+</head>
+<body>
+  <h1>Detalle de Compra</h1>
+  <div id="infoCompra"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    // Simulación: datos falsos (en producción, usa fetch a servidor)
+    const compras = {
+      "1234": {
+        nombre: "Juan Pérez",
+        evento: "Teatro",
+        fecha: "2025-12-31",
+        hora: "20:00",
+        ubicacion: "Auditorio",
+        boletos: 2,
+        total: 400
+      }
+    };
+
+    const datos = compras[id];
+
+    if (datos) {
+      document.getElementById("infoCompra").innerHTML = `
+        <p>Nombre: ${datos.nombre}</p>
+        <p>Evento: ${datos.evento}</p>
+        <p>Fecha: ${datos.fecha}</p>
+        <p>Hora: ${datos.hora}</p>
+        <p>Ubicación: ${datos.ubicacion}</p>
+        <p>Boletos: ${datos.boletos}</p>
+        <p>Total: $${datos.total}</p>
+        <p>Código de Compra: ${id}</p>
+      `;
+    } else {
+      document.getElementById("infoCompra").textContent = "Compra no encontrada.";
+    }
+  </script>
+</body>
+</html>
