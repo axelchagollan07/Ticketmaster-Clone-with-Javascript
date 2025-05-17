@@ -22,10 +22,16 @@ This project is a simplified event ticket purchasing platform inspired by Ticket
 
 ## 🚀 How to Run
 
-1. Import `database.sql` into your local MySQL server.
-2. Set up a local PHP server (e.g., XAMPP).
-3. Update DB connection credentials in PHP files.
-4. Open the purchase form in your browser, submit a purchase, and download the PDF.
+1. Create a database named **`ticketmaster`**.  
+2. Import the **`database.sql`** file into the database.  
+3. Update your database username and password in the following files:  
+   - `/login/backend/db.js`  
+   - `/login/backend/index.js`  
+   - `/pagos/guardar_boleto.php`  
+4. Run **`/login/backend/index.js`** using Node.js.  
+5. Open **`index.html`** with Live Server (VS Code extension): right-click the file and select **"Open with Live Server"**.  
+6. You're all set—enjoy the app!
+
 
 ---
 
