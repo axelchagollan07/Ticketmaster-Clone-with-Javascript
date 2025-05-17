@@ -1,8 +1,8 @@
 <?php
 // Configura la conexión con la base de datos
 $host = "localhost";
-$usuario = "root"; // reemplaza con tu usuario de MySQL
-$contrasena = "Emm4nu3l2016$"; // reemplaza con tu contraseña de MySQL
+$usuario = "PUT HERE YOUR SQL USER"; // reemplaza con tu usuario de MySQL
+$contrasena = "PUT HERE YOUR SQL PASSWORD"; // reemplaza con tu contraseña de MySQL
 $bd = "ticketmaster"; // reemplaza con tu base de datos
 
 $conn = new mysqli($host, $usuario, $contrasena, $bd);
