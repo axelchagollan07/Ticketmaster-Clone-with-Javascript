@@ -33,6 +33,17 @@ This project is a simplified event ticket purchasing platform inspired by Ticket
 6. You're all set—enjoy the app!
 
 
+### Description
+
+This project is a web-based ticketing system named **TicketMaster**, designed to simulate the process of selecting, purchasing, and storing event tickets. It features a front-end interface for users to browse and choose seats, as well as a back-end setup that handles user authentication, database interactions, and payment processing. It's a great example of full-stack development using technologies like HTML, CSS, JavaScript, PHP, and Node.js.
+
+### Watch the Demo
+
+Want to see how it all works in action?  
+🎥 **Check out my video explaining the website here:**  
+[https://youtu.be/h_oR3PIg0kY?si=QaRIp5BgT6whYHT3](https://youtu.be/h_oR3PIg0kY?si=QaRIp5BgT6whYHT3)
+
+
 ---
 
 Feel free to fork or contribute to improve the project!
