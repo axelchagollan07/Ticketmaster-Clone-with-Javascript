@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 // Conexión a tu base de datos MySQL (ajusta los datos a tu configuración)
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
-  password: 'Emm4nu3l2016$',
+  user: 'PUY HERE YOUR SQL USER',
+  password: 'PUT HERE YOUR SQL PASSWORD',
   database: 'ticketmaster'
 });
 
